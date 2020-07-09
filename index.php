@@ -51,7 +51,7 @@ require_once "phpController/client/getcltselect.php";
                     <div>
                         <label for="choixclt">Type Client</label>
                         <select name="cltp" id="choixclt" onchange="showForm()">
-                        <option value="0" id="choixcltMo">--------Client-----------</option>
+                        <option value="" id="choixcltMo">--------Client-----------</option>
                             <option value="1">Client Entreprise</option>
                             <option value="2">Client Particulier</option>
                         </select><br></br>
@@ -90,10 +90,10 @@ require_once "phpController/client/getcltselect.php";
                             <!--s'enquerir si client salarié, si non, cacher l'information de l'employeur par onclick -->
 
                             <!--inserer <option> php dans le html pour effectuer une select en php et lier avec la table clt phy 0=id et 6=profession-->
-                            <label for="profession">Profession</label>
+                            <label for="profession">Statut</label>
                                 <select name="statut" id="statut">
                                     <option value="1" id="cltouisalarie">Salarie</option>
-                                    <option value="0" id="nonsalarie">Non Salarie</option>
+                                    <option value="2" id="nonsalarie">Non Salarie</option>
                                 </select><br></br>
                             <div id="cltsalarie" hidden>
                                 <label for="salaire">Salaire</label>

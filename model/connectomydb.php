@@ -13,18 +13,12 @@ function getConnect() //creer une fonction de connection
     } catch (\Throwable $th) {//throwable 
         throw $th;
     }
-    return $conn;
+    return $conn;//retourner la connexion
 }
 
-/*//creer connection avec la base de données
-$conn = new mysqli($dbServername, $dbUsername, $dbPassword, $dbName);
-function getConnect(){
-    return '$conn';
-}
+function makeRequest($mrequest){  //créer une fonction de requete connexion 
 
-//  if (mysqli_connect_error()) {
-//      die("Connect Error(" . mysqli_connect_error(). ")" . mysqli_connect_error());
-//  } else {
-//      die("Connection PAS établie " .mysqli_connect_error());
-//  }*/
+    $conn = getConnect();  //qui prend en charge laconnexion à chaque fois
+    return mysqli_query($conn, $mrequest); // qui retourne la connexion et la requete
+}
  ?>

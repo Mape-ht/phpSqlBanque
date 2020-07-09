@@ -1,4 +1,3 @@
-<?php
 extract ($_POST); //enleve les variables dans le tableau POSTet y a plus de $_Post à ecrire $_Post["nom"] devient $nom 
 include_once('./model/connectomydb.php'); //Inserer le chemin de connection à la bdd
 
@@ -74,4 +73,3 @@ $conn = new mysqli($dbServername, $dbUsername, $dbPassword, $dbName);
 }*/  
 
     }
-?>
