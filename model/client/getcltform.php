@@ -1,6 +1,6 @@
 <?php
 extract ($_POST); //enleve les variables dans le tableau POSTet y a plus de $_Post à ecrire $_Post["nom"] devient $nom 
-include_once('./model/connectomydb.php'); //Inserer le chemin de connection à la bdd
+include_once("../../model/connectomydb.php"); //Inserer le chemin de connection à la bdd
 
    $dbServername = "localhost";
    $dbUsername = "root";
@@ -16,7 +16,7 @@ include_once('./model/connectomydb.php'); //Inserer le chemin de connection à l
   if (isset($_POST['submit'])) {
         //echo"je vois les isset";
        
-        //insert pour client moral
+    /*    //insert pour client moral
      if ($cltp =='1'){
                      
         $sql = mysqli_query($conn,"INSERT INTO client_moral(`id`, `raison_social`, `nom`,
@@ -62,16 +62,13 @@ include_once('./model/connectomydb.php'); //Inserer le chemin de connection à l
         echo ("Base de données RENSEIGNEE");
     }else
         echo ("ECHEC "); 
+
+
+        if($sql!=0){
+            echo ("Base de données RENSEIGNEE");
+        }else
+            echo ("ECHEC "); 
     }
-
-         
-   if($sql!=0){
-        echo ("Base de données RENSEIGNEE");
-    }else
-        echo ("ECHEC "); 
-    
-
-
 
 /*if (!empty($raisonSo) || !empty($nomsEmployeur) || !empty($adresseEmploi) || !empty($numIdEmployeur)) {
     echo 'Données Validées';
@@ -102,12 +99,12 @@ include_once('./model/connectomydb.php'); //Inserer le chemin de connection à l
     }else{
         echo "Remplir tous les champs";
         die();
-        $stmt->close;
+        $stmt->close;*/
 
 }
 
   
-    //Garder les info validées dans les champs
+   /* //Garder les info validées dans les champs
     echo isset($_POST['raisonSo']) ? $raisonSo : '';
     echo isset($_POST['nomsEmployeur']) ? $nomsEmployeur : '';
     echo isset($_POST['adresseEmploi']) ? $adresseEmploi : '';

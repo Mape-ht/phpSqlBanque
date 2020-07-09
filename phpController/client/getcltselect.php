@@ -1,5 +1,7 @@
 <?php
-include "./model/connectomydb.php";
+
+require_once "model/connectomydb.php";
+
 /*function getAllTypeClt()
 { //pas utile, le select a été mis en static 
     $sql = "SELECT * FROM type_client";
@@ -22,8 +24,8 @@ function getAllEmployeur() //pour faire apparaitre la liste des clients entrepri
 {
     $sql = "SELECT * FROM client_moral";
     $conn = getConnect();
-    return $conn->query($sql)->fetchAll();
 
+    return $conn->query($sql)->fetchAll();
 }
 
 ?>

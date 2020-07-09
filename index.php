@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-include"./phpController/client/getcltselect.php";
+require_once "phpController/client/getcltselect.php";
 ?>
 <html lang="en">
 
@@ -36,7 +36,7 @@ include"./phpController/client/getcltselect.php";
             </aside>
             <!--client physique séparé de client moral-->
             <section class="Client">
-                <form method="POST" action="./phpController/client/getcltform.php" id="creacltForm" onsubmit="return cltvalidate()">
+                <form method="POST" action="./model/client/getcltform.php">
                     <!--<div>
                         <fieldset>
                             <legend>Type de Client </legend>
@@ -46,13 +46,14 @@ include"./phpController/client/getcltselect.php";
                                 <option value="2" id="cltPhy">Client Physique</option>
                             </select>
                         </fieldset><br></br>
+                        onsubmit="return cltvalidate()"
                     </div>-->
                     <div>
                         <label for="choixclt">Type Client</label>
                         <select name="cltp" id="choixclt" onchange="showForm()">
                         <option value="0" id="choixcltMo">--------Client-----------</option>
-                            <option value="1" id="choixcltMo">Client Entreprise</option>
-                            <option value="2" id="choixcltPy">Client Particulier</option>
+                            <option value="1">Client Entreprise</option>
+                            <option value="2">Client Particulier</option>
                         </select><br></br>
                     </div>
 
@@ -61,13 +62,13 @@ include"./phpController/client/getcltselect.php";
                         <fieldset id="creacltMoral">
                             <legend>Client Moral</legend>
                             <label for="raisonSo">Raison sociale</label>
-                            <input type="text" id="raisonSo" name="raisonSo" placeholder="Raison sociale" required /><br />
+                            <input type="text" id="raisonSo" name="raisonSo" placeholder="Raison sociale"/><br />
                             <label for="nomsEmployeur">Nom de l'employeur</label>
                             <input type="text" id="nomsEmployeur" name="nomsEmployeur" placeholder="Noms de l'Employeur" /> <br><br />
                             <label for="adresseEmploi">Adresse de l'employeur</label>
-                            <input type="text" id="adresseEmploi" name="adresseEmploi" placeholder="Adresse de l'Employeur" required /><br />
+                            <input type="text" id="adresseEmploi" name="adresseEmploi" placeholder="Adresse de l'Employeur"/><br />
                             <label for="numIdEmployeur">NINEA</label>
-                            <input type="text" id="numIdEmployeur" name="numIdEmployeur" placeholder="Numero ident Employeur" required /><br><br />
+                            <input type="text" id="numIdEmployeur" name="numIdEmployeur" placeholder="Numero ident Employeur"/><br><br />
 
                         </fieldset>
                     </div>
@@ -77,11 +78,11 @@ include"./phpController/client/getcltselect.php";
                         <fieldset id="creacltPhy">
                             <legend>Client Physique</legend>
                             <label for="nomsClt">Noms Client</label>
-                            <input type="text" id="nomsClt" name="nomsClt" placeholder="Noms du Client" required>
+                            <input type="text" id="nomsClt" name="nomsClt" placeholder="Noms du Client">
                             <label for="prenoms">Prénoms</label>
-                            <input type="text" id="prenoms" name="prenoms" placeholder="Prénoms du Client" required><br><br />
+                            <input type="text" id="prenoms" name="prenoms" placeholder="Prénoms du Client"><br><br />
                             <label for="adresse">Adresse</label>
-                            <input type="text" id="adresse" name="adresse" placeholder="Adresse du Client" required />
+                            <input type="text" id="adresse" name="adresse" placeholder="Adresse du Client"/>
                             <label for="email">email</label>
                             <input type="email" id="email" name="email" placeholder="Email du Client" /><br><br />
                             <label for="phone">Téléphone</label>
@@ -92,16 +93,12 @@ include"./phpController/client/getcltselect.php";
                             <label for="profession">Profession</label>
                                 <select name="statut" id="statut">
                                     <option value="1" id="cltouisalarie">Salarie</option>
-                                    <option value="2" id="nonsalarie">Non Salarie</option>
+                                    <option value="0" id="nonsalarie">Non Salarie</option>
                                 </select><br></br>
-                                <label for="profession">Profession</label>
-                                <input type="text" name="profession" id="profession"/>
-                            
-
-                            <div id="cltsalarie">
+                            <div id="cltsalarie" hidden>
                                 <label for="salaire">Salaire</label>
                                 <input type="text" id="salaire" name="salaire" placeholder="Salaire du Client"><br><br />
-                                <div>
+                           <div>
                                     <label for="nomsEmployeur">Employeur</label>
                                     <select name="employeur" id="nomsEmployeur">
                                         <!--<option value="1" id="employeurExistant">Employeur existant</option>
@@ -123,40 +120,14 @@ include"./phpController/client/getcltselect.php";
                         </fieldset><br></br>
                     </div>
                     <div>
-                        <button type="submit" name="submit" class="bouttonV">VALIDER</button>
+                        <!--<button type="submit" name="submit" class="bouttonV">VALIDER</button>-->
+                        <input type="submit" value="valider"/>
                         <button type="reset" class="bouttonA">ANNULER</button>
                     </div>
                 </form>
             </section>
         </main>
-
-        
-        
-        <!--<script type="text/javascript">
-        function showForm(){
-
-        let client=document.getElementById("choixclt")
-        let choix = client.selectedIndex;
-        let type = client.options[choix].text;
-        if(type==="Client Entreprise"){
-            document.getElementById("cltMoralForm").hidden = false;
-            document.getElementById("cltPhysiqueForm").hidden = true;
-
-        }else{
-            if(type==="Client Particulier"){
-                document.getElementById("cltMoralForm").hidden = true;
-                document.getElementById("cltPhysiqueForm").hidden = false;
-            }
-            else{
-                document.getElementById("cltMoralForm").hidden = true;
-                document.getElementById("cltPhysiqueForm").hidden = true;
-            }
-           
-}
-
-}
-    
-    </script>-->
+<script src="./public/js/creaclt.js"></script>
     </body>
 
 </html>

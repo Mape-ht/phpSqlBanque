@@ -133,13 +133,17 @@ main section form select{
         
 }
 
-section form .message{
+.hidden {
+display: none !important;
+
+}
+/*section form .message{
     
     background-color: rgb(‎255, 83, 73, 0.9);
     text-align: center;
     font-size: 0.5em;
     color: 255,255,255, 0.9;
-}
+}*/
 
 
 
